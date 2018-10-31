@@ -16,7 +16,7 @@ fi
 
 if [[ $stylecheck == 0 ]]
   then
-    git commit -m $msg
+    git commit -m "$msg"
 else
   echo "stylecheck failed. Please entertain the belligerent requests of the mechanical code parsers."
 fi
