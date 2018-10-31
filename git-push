@@ -1,0 +1,18 @@
+#!/bin/bash
+
+branch=`git rev-parse --abbrev-ref HEAD`
+remote="origin"
+if [[ $1 != "" ]]
+  then
+    remote=$1
+fi
+echo "push branch='$branch' to remote='$remote'? (y/n)"
+read pushReady
+
+if [[ $pushReady == 'y' ]]
+  then
+    echo "pushing - git push $remote $branch"
+else
+  echo "cancelled push"
+fi
+

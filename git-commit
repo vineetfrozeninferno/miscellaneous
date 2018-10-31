@@ -1,0 +1,22 @@
+#!/bin/bash
+
+msg=$1
+if [[ $msg == "" ]]
+  then
+    echo "Please enter a commit message."
+    exit 1
+fi
+
+stylecheck=0
+if [[ -e "scalastyle-config.xml" ]]
+  then
+    sbt scalastyle
+    stylecheck=$?
+fi
+
+if [[ $stylecheck == 0 ]]
+  then
+    git commit -m $msg
+else
+  echo "stylecheck failed. Please entertain the belligerent requests of the mechanical code parsers."
+fi
