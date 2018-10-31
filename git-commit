@@ -10,7 +10,7 @@ fi
 stylecheck=0
 if [[ -e "scalastyle-config.xml" ]]
   then
-    sbt scalastyle
+    sbt scalastyle test:scalastyle
     stylecheck=$?
 fi
 
