@@ -2,11 +2,12 @@
 
 branch=`git rev-parse --abbrev-ref HEAD`
 remote="origin"
+remoteUrl=`git ls-remote --get-url $origin`
 if [[ $1 != "" ]]
   then
     remote=$1
 fi
-echo "push branch='$branch' to remote='$remote'? (y/n)"
+echo "push branch='$branch' to remote='$remoteUrl'? (y/n)"
 read pushReady
 
 if [[ $pushReady == 'y' ]]
