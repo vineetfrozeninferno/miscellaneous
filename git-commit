@@ -13,18 +13,18 @@ if [[ -e "scalastyle-config.xml" ]]; then
 fi
 
 if [[ $stylecheck == 0 ]]; then
-  uncommittedFiles=`git status | grep modified | wc -l`
-  if[[ $uncommittedFiles == 0 ]]; then
+  uncommittedFiles=`git status | grep "Changes not staged for commit" | wc -l | tr -d '[:space:]'`
+  if [[ $uncommittedFiles == "0" ]]; then
     commitGoAhead="y"
   else
-    echo "There are uncommitted files. Are you sure you want to push the current state? (y/n)"
+    echo "There are files that have been modified but not added. Are you sure you want to commit the current state? (y/n)"
     read commitGoAhead
   fi
   if [[ $commitGoAhead == 'y' ]]; then
     git commit -m "$msg"
   else
-    echo "cancelled commit"
+    echo "Cancelled commit"
   fi
 else
-  echo "stylecheck failed. Please entertain the belligerent requests of the mechanical code parsers."
+  echo "Stylecheck failed. Please entertain the belligerent requests of the mechanical code parsers."
 fi
