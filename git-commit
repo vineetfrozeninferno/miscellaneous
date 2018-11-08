@@ -1,22 +1,30 @@
 #!/bin/bash
 
 msg=$1
-if [[ $msg == "" ]]
-  then
-    echo "Please enter a commit message."
-    exit 1
+if [[ $msg == "" ]]; then
+  echo "Please enter a commit message."
+  exit 1
 fi
 
 stylecheck=0
-if [[ -e "scalastyle-config.xml" ]]
-  then
-    sbt scalastyle test:scalastyle
-    stylecheck=$?
+if [[ -e "scalastyle-config.xml" ]]; then
+  sbt scalastyle test:scalastyle
+  stylecheck=$?
 fi
 
-if [[ $stylecheck == 0 ]]
-  then
+if [[ $stylecheck == 0 ]]; then
+  uncommittedFiles=`git status | grep modified | wc -l`
+  if[[ $uncommittedFiles == 0 ]]; then
+    commitGoAhead="y"
+  else
+    echo "There are uncommitted files. Are you sure you want to push the current state? (y/n)"
+    read commitGoAhead
+  fi
+  if [[ $commitGoAhead == 'y' ]]; then
     git commit -m "$msg"
+  else
+    echo "cancelled commit"
+  fi
 else
   echo "stylecheck failed. Please entertain the belligerent requests of the mechanical code parsers."
 fi
