@@ -8,7 +8,7 @@ fi
 
 stylecheck=0
 if [[ -e "scalastyle-config.xml" ]]; then
-  sbt scalastyle test:scalastyle
+  sbt compile scalastyle test:scalastyle
   stylecheck=$?
 fi
 
@@ -26,5 +26,5 @@ if [[ $stylecheck == 0 ]]; then
     echo "Cancelled commit"
   fi
 else
-  echo "Stylecheck failed. Please entertain the belligerent requests of the mechanical code parsers."
+  echo "Stylecheck or compile failed. Please entertain the belligerent requests of the mechanical code parsers."
 fi
