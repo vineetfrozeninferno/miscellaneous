@@ -13,7 +13,7 @@ read pushReady
 if [[ $pushReady == 'y' ]]
   then
     echo "pushing - git push $remote $branch"
-    git push $remote $branch
+    git push --force-with-lease $remote $branch
 else
   echo "cancelled push"
 fi
