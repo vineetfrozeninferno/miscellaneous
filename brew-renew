@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 echo "running 'brew update; brew upgrade; brew cask upgrade'"
 brew update; brew upgrade; brew cask upgrade
