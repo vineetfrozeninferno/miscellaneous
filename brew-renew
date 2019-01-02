@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "running 'brew update; brew upgrade; brew cask upgrade'"
-brew update; brew upgrade; brew cask upgrade
+brew update; brew upgrade; brew cask upgrade --greedy
 
 echo "cleanup of packages except python"
 brew_packages_to_be_cleaned=`brew list -1 | grep -vi python | tr '\n' ' '`
