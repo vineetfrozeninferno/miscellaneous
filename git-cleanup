@@ -10,5 +10,6 @@ for gitRepo in $(find ~/git -name ".git" | sed 's/.git$//g'); do
       git branch -D $branch
     fi
   done
+  git gc
 done
 cd
