@@ -1,4 +1,4 @@
-local user='%{$fg[magenta]%}%n@%{$fg[magenta]%}%m%{$reset_color%}'
+local user='%{$fg[magenta]%}%m%{$reset_color%}'
 local pwd='%{$fg[yellow]%}%~%{$reset_color%}'
 local rvm=''
 if which rvm-prompt &> /dev/null; then
