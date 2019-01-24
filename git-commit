@@ -1,6 +1,15 @@
 #!/bin/bash
 
 msg=$1
+amend=$2
+
+if [[ $amend != "" ]]; then
+  if [[ $amend != "--amend" ]]; then
+    echo "uhh!! I don't know what to do with $amend"
+    exit 1
+  fi
+fi
+
 if [[ $msg == "" ]]; then
   echo "Please enter a commit message."
   exit 1
@@ -21,7 +30,7 @@ if [[ $stylecheck == 0 ]]; then
     read commitGoAhead
   fi
   if [[ $commitGoAhead == 'y' ]]; then
-    git commit -m "$msg"
+    git commit $amend -m "$msg"
   else
     echo "Cancelled commit"
   fi
