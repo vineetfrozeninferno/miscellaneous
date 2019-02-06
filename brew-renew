@@ -10,3 +10,7 @@ brew cleanup $brew_packages_to_be_cleaned
 echo "cleanup of casks"
 brew_cask_packages_to_be_cleaned=`brew cask list -1 | tr '\n' ' '`
 brew cleanup $brew_cask_packages_to_be_cleaned
+
+echo "upgrading oh-my-zsh"
+upgrade_oh_my_zsh
+source ~/.zshrc
