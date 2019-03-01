@@ -12,5 +12,5 @@ brew_cask_packages_to_be_cleaned=`brew cask list -1 | tr '\n' ' '`
 brew cleanup $brew_cask_packages_to_be_cleaned
 
 echo "upgrading oh-my-zsh"
-~/.oh-my-zsh/tools/upgrade.sh
+sh ~/.oh-my-zsh/tools/upgrade.sh
 source ~/.zshrc
