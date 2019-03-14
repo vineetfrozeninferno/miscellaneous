@@ -1,2 +1,2 @@
 #!/bin/bash
-find ~/git -name "*.git" | cut -d "." -f1 | xargs -n1 -I dir sh -c "echo 'updating dir'; cd dir; git-update"
+find ~/git -name "*.git" | cut -d "." -f1 | xargs -n1 -I dir sh -c "echo 'updating dir'; cd dir; git-update; git pull origin master"
