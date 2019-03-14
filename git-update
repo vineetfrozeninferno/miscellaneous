@@ -6,4 +6,4 @@ if [[ $branch != "master" ]]; then
   exit 0
 fi
 
-git fetch upstream master; git merge upstream/master; git push origin master
+git fetch upstream master && git merge upstream/master && git push origin master
