@@ -27,7 +27,7 @@ fi
 
 stylecheck=0
 if [[ -e "scalastyle-config.xml" ]]; then
-  sbt -mem 1700 compile test scalastyle test:scalastyle
+  sbt -mem 1700 compile test scalafmt test:scalafmt scalastyle test:scalastyle
   stylecheck=$?
 fi
 
